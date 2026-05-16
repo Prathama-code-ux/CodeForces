@@ -13,7 +13,7 @@ int main(){
         }else{
             count = 1;
         }
-''
+        
         if(count == 7){
             cout << "YES" << endl;
             return 0;
