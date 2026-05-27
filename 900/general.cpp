@@ -14,33 +14,30 @@ int main(){
     int arrmin = a[0];
     int maxidx = 0;
     int minidx = 0;
-    int t = 0;
-
+    
     for(int i = 0; i < n; i++){
-        arrmax = max(arrmax, a[i]);
-        arrmin = min(arrmin, a[i]);
-        if(a[i] == arrmax){
+        if(a[i] > arrmax){
+            arrmax = a[i];
             maxidx = i;
         }
-        if(a[i] == arrmin){
-            minidx = i;
+    }
+
+    // rightmost minimum
+    for(int j = 0; j < n; j++){
+        if(a[j] <= arrmin){
+            arrmin = a[j];
+            minidx = j;
         }
     }
 
-    while(maxidx > minidx){
-        if(a[0] != arrmax){
-            swap(a[maxidx], a[maxidx-1]);
-            t++;
-            maxidx--;
-        }
+    int t = maxidx + (n - 1 - minidx);
 
-        if(a[n-1] != arrmin){
-            swap(a[minidx], a[minidx+1]);
-            t++;
-            minidx++;
-        }
+    // if they cross paths
+    if(maxidx > minidx){
+        t--;
     }
-    
+
     cout << t << endl;
+
     return 0;
 }
